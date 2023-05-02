@@ -8,7 +8,7 @@ import Css from './ImageList/Card.module.css';
 
 export function App() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [images, setImages] = useState([]);
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState('idle');
@@ -32,11 +32,11 @@ export function App() {
             setImages(prevImages => prevImages.concat(image));
           });
         }
-        setError('No found images');
+        // setError('No found images');
         setStatus('rejected');
       });
     } catch (error) {
-      setError(error);
+      console.log(error)
     }
   }, [page, searchQuery]);
 
@@ -48,7 +48,7 @@ export function App() {
     setImages([]);
     setTotalImages(null);
     setPage(1);
-    setError(null);
+    // setError(null);
   }
   const totalPages = Math.ceil(totalImages / 12);
 
